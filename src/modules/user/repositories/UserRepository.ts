@@ -5,6 +5,7 @@ import { TCreateUserDTO } from '../types/DTOs/TCreateUserDTO';
 import { TFindUserByEmail } from '../types/DTOs/TFindUserByEmail';
 import { TFindUserById } from '../types/DTOs/TFindUserById';
 import { TFindUserByUsername } from '../types/DTOs/TFindUserByUsername';
+import { TSaveUserDTO } from '../types/DTOs/TSaveUserDTO';
 
 export class UserRepository implements IUserRepository {
   async findById({ id }: TFindUserById): Promise<User> {
@@ -68,5 +69,17 @@ export class UserRepository implements IUserRepository {
       },
     });
     return user;
+  }
+
+  async save({ userId, username, avatar }: TSaveUserDTO): Promise<User> {
+    return database.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        username,
+        avatar,
+      },
+    });
   }
 }

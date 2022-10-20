@@ -2,7 +2,7 @@ import path from 'node:path';
 import multer, { StorageEngine } from 'multer';
 import crypto from 'node:crypto';
 
-type UploadConfig = {
+export type UploadConfig = {
   directory: string;
   storage: StorageEngine;
 };
