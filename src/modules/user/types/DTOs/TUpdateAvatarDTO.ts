@@ -1,4 +1,4 @@
 export type TUpdateAvatarDTO = {
-  userid: string;
+  userId: string;
   avatarFileName: string;
 };

@@ -7,8 +7,8 @@ import fs from 'node:fs';
 
 export class UploadUserAvatarUsecase {
   constructor(private readonly userRepository: IUserRepository) {}
-  async execute({ avatarFileName, userid }: TUpdateAvatarDTO) {
-    const user = await this.userRepository.findById({ id: userid });
+  async execute({ avatarFileName, userId }: TUpdateAvatarDTO) {
+    const user = await this.userRepository.findById({ id: userId });
 
     if (!user) {
       throw new AppError(
