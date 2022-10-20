@@ -8,8 +8,9 @@ import { TUpdateMissionDTO } from '../types/DTOs/TUpdateMissionDTO';
 import { database } from '../../../shared/database';
 import { expProvider } from '../../../shared/functions/expProvider';
 import { TCompleteMIssionDTO } from '../types/DTOs/TCompleteMIssionDTO';
-import { expUp } from 'src/shared/functions/expUp';
-import { levelUp } from 'src/shared/functions/levelUp';
+import { expUp } from '../../../shared/functions/expUp';
+import { levelUp } from '../../../shared/functions/levelUp';
+import { TFindUserById } from 'src/modules/user/types/DTOs/TFindUserById';
 
 export class MissionRepository implements IMissionRepository {
   async create({
@@ -56,14 +57,17 @@ export class MissionRepository implements IMissionRepository {
       },
     });
   }
+
   async findAll({ userId }: TFindAllMissionDTO): Promise<Mission[]> {
     const missions = await database.mission.findMany({
       where: {
         userId,
       },
     });
+
     return missions;
   }
+
   async showOne({ missionId }: TShowOneDTO): Promise<Mission> {
     const mission = await database.mission.findUnique({
       where: {
@@ -73,6 +77,7 @@ export class MissionRepository implements IMissionRepository {
 
     return mission;
   }
+
   async complete({
     userLevel,
     userExp,

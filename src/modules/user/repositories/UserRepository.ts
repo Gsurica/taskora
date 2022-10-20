@@ -12,6 +12,23 @@ export class UserRepository implements IUserRepository {
       where: {
         id,
       },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        avatar: true,
+        exp: true,
+        level: true,
+        missions: {
+          select: {
+            id: true,
+            title: true,
+            description: true,
+            isComplete: true,
+          },
+        },
+        password: true,
+      },
     });
     return user;
   }
