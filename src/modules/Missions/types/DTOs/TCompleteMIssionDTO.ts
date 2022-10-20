@@ -3,4 +3,5 @@ export type TCompleteMIssionDTO = {
   userExp: number;
   missionId: string;
   userId?: string;
+  isComplete: boolean;
 };

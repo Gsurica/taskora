@@ -82,13 +82,14 @@ export class MissionRepository implements IMissionRepository {
     userLevel,
     userExp,
     missionId,
+    isComplete,
   }: TCompleteMIssionDTO): Promise<Mission> {
     const missionCompleted = await database.mission.update({
       where: {
         id: missionId,
       },
       data: {
-        isComplete: true,
+        isComplete: isComplete,
         User: {
           update: {
             exp: expUp(userExp, expProvider(userLevel)),
