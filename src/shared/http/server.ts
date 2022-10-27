@@ -4,6 +4,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import { routes } from './routes';
 import { AppError } from '../errors/AppError';
+import { errors } from 'celebrate';
 
 const app = express();
 

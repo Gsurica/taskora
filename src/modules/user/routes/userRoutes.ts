@@ -18,7 +18,6 @@ const upload = multer(Uploadcondig);
 
 userRoutes.post('/', createUserController.handle);
 userRoutes.post('/login', loginUserController.handle);
-
 userRoutes.use(isAuth);
 userRoutes.get('/:userId', showUserController.handle);
 userRoutes.patch(
